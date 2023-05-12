@@ -187,7 +187,7 @@
                 justify-content: center;
                 align-items: center;
                 padding: 0px 15px;
-                margin: 20px 0px;
+                margin: 20px 0px 40px 0px;
                 "
                 >
                 <div
