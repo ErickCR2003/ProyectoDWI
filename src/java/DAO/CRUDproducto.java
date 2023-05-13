@@ -5,6 +5,7 @@
 package DAO;
 
 import Modelo.Producto;
+import config.ConexionBD;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
@@ -23,7 +24,7 @@ public class CRUDproducto extends ConexionBD {
     public CRUDproducto() {
     }
 
-    public List listarproductos() throws SQLException {
+    public List listarproductos(){
 
         List<Producto> listaproductos = new ArrayList<>();
 
@@ -43,7 +44,7 @@ public class CRUDproducto extends ConexionBD {
             }
 
         } catch (Exception ex) {
-            throw new SQLException("ERROR! No se puede insertar los autores al combobox..." + ex);
+            System.out.println("Error");
         } finally {
             this.cerrarconexion();
         }

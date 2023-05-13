@@ -1,12 +1,7 @@
-<%-- 
-    Document   : index
-    Created on : 11 may. 2023, 18:32:03
-    Author     : carra
---%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!doctype html>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -168,7 +163,7 @@
                 >
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Controlador?accion=xd">Todo</a>
+                        <a class="nav-link active" aria-current="page" href="ControladorXD?accion=todo">Todo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Skate</a>
@@ -202,7 +197,10 @@
                                 <img src="img/400X200.gif" class="card-img-top" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">${p.getNombre()}</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p class="card-text">${p.getMarca()}</p>
+                                    <p class="card-text">${p.getTalla()}</p>
+                                    <p class="card-text">${p.getColor()}</p>
+                                    <p class="card-text">${p.getPrecio()}</p>
                                     <a class="btn btn-outline-primary">Agregar al Carrito</a>
                                     <a class="btn btn-danger">Comprar</a>
                                 </div>
@@ -261,4 +259,14 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
+    <script>
+        // Verificar si ya se redirigió
+        if (!localStorage.getItem("redireccionado")) {
+            // Redireccionar
+            window.location.href = "http://localhost:8080/ProyectoDWI/ControladorXD?accion=todo";
+            // Establecer el indicador de redirección en el almacenamiento local
+            localStorage.setItem("redireccionado", "true");
+        }
+
+    </script>
 </html>

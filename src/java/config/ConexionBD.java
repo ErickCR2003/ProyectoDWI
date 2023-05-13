@@ -1,4 +1,4 @@
-package DAO;
+package config;
 
 import java.sql.*;
 
@@ -15,22 +15,22 @@ public class ConexionBD implements Parametros {
 
     }
 
-    public Connection obtenerconexion() throws SQLException {
+    public Connection obtenerconexion(){
         try {
             Class.forName(DRIVER);
             conexion = DriverManager.getConnection(RUTA, USUARIO, CLAVE);
             st = conexion.createStatement();
-            return conexion;
         } catch (Exception e) {
-            throw new SQLException("ERROR! No se puede conectar la BD...", e);
+            System.out.println("ERROR! No se pudo cerrar la BD..." + e);
         }
+        return conexion;
     }
 
-    public void cerrarconexion() throws SQLException {
+    public void cerrarconexion(){
         try {
             conexion.close();
         } catch (Exception e) {
-            throw new SQLException("ERROR! No se pudo cerrar la BD..." + e);
+            System.out.println("ERROR! No se pudo cerrar la BD..." + e);
         }
     }
 
