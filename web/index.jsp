@@ -196,11 +196,12 @@
                             <div class="card" style="width: 18rem;">
                                 <img src="img/400X200.gif" class="card-img-top" alt="..." />
                                 <div class="card-body">
-                                    <h5 class="card-title">${p.getNombre()}</h5>
-                                    <p class="card-text">${p.getMarca()}</p>
-                                    <p class="card-text">${p.getTalla()}</p>
-                                    <p class="card-text">${p.getColor()}</p>
-                                    <p class="card-text">${p.getPrecio()}</p>
+                                    <h5 class="card-title text-center">${p.getNombre()}</h5>
+                                    <p class="card-text">${p.getMarca()}<br>
+                                                         ${p.getTalla()}<br>
+                                                         ${p.getColor()}<br>
+                                                         ${p.getPrecio()}
+                                    </p>
                                     <a class="btn btn-outline-primary">Agregar al Carrito</a>
                                     <a class="btn btn-danger">Comprar</a>
                                 </div>
