@@ -1,0 +1,109 @@
+CREATE TABLE categoria(
+	id_categoria INT PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(50)
+);
+
+CREATE TABLE talla(
+	id_talla INT PRIMARY KEY AUTO_INCREMENT,
+	numeroCalzado INT
+);
+
+CREATE TABLE color(
+	id_color INT PRIMARY KEY AUTO_INCREMENT,
+	color VARCHAR(50)
+);
+
+CREATE TABLE marca(
+	id_marca INT PRIMARY KEY AUTO_INCREMENT,
+	marca VARCHAR(50)
+);
+
+CREATE TABLE cliente (
+	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+	nombrecompleto VARCHAR (80),
+	telefono VARCHAR (10),
+	direccion VARCHAR (50),
+	fnacimiento DATE,
+	tipoIdentificacion VARCHAR(20),
+	numeroIdentifacion VARCHAR(50)
+);
+
+CREATE TABLE compra(
+	id_compra INT PRIMARY KEY AUTO_INCREMENT,
+	id_cliente INT, -- F
+	id_pago INT, -- F
+	fcreacion DATE,
+	hcreacion TIME,
+	monto DOUBLE,
+	estado VARCHAR(50)
+);
+
+CREATE TABLE detalle_compras(
+	id_detalle INT PRIMARY KEY AUTO_INCREMENT,
+	id_producto INT, -- F
+	id_compra INT, -- F
+	cantidad INT,
+	precioCompra DOUBLE	
+);
+
+CREATE TABLE empleado(
+	id_empleado INT PRIMARY KEY AUTO_INCREMENT,
+	usuario VARCHAR(50),
+	contraseña VARCHAR(50),
+	nombre VARCHAR(50),
+	apellido VARCHAR(50),
+	telefono VARCHAR(9),
+	email VARCHAR(50),
+	fnacimiento DATE,
+	tipo VARCHAR (15),
+	genero VARCHAR(10),
+	estado VARCHAR(15),
+	dni VARCHAR(12)
+);
+
+CREATE TABLE pago (
+	id_pago INT PRIMARY KEY AUTO_INCREMENT,
+	monto DOUBLE
+);
+
+CREATE TABLE producto (
+	id_producto INT PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(50),
+	precio DOUBLE,
+	stock INT,
+	foto LONGBLOB,
+	id_categoria INT, -- F
+	id_empleado INT, -- F
+	id_talla INT, -- F
+	id_marca INT, -- F
+	id_color INT -- F
+);
+
+
+ALTER TABLE producto
+ADD FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria);
+
+ALTER TABLE producto 
+ADD FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado);
+
+ALTER TABLE producto
+ADD FOREIGN KEY (id_talla) REFERENCES talla(id_talla);
+
+ALTER TABLE producto 
+ADD FOREIGN KEY (id_marca) REFERENCES marca(id_marca);
+
+ALTER TABLE producto
+ADD FOREIGN KEY (id_color) REFERENCES color(id_color);
+
+ALTER TABLE detalle_compras
+ADD FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+ALTER TABLE detalle_compras 
+ADD FOREIGN KEY (id_compra) REFERENCES compra(id_compra);
+
+ALTER TABLE compra
+ADD FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente);
+
+ALTER TABLE compra 
+ADD FOREIGN KEY (id_pago) REFERENCES pago(id_pago);
+

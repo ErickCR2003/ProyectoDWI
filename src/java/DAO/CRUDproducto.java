@@ -44,14 +44,14 @@ public class CRUDproducto extends ConexionBD {
             }
 
         } catch (Exception ex) {
-            System.out.println("Error");
+            System.out.println("Error"+ex);
         } finally {
             this.cerrarconexion();
         }
         return listaproductos;
     }
 
-    public void listarIMG(int id, HttpServletResponse response) throws SQLException {
+    public void listarIMG(int id, HttpServletResponse response){
         
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -75,7 +75,7 @@ public class CRUDproducto extends ConexionBD {
           
 
         } catch (Exception ex) {
-            throw new SQLException("ERROR! No se puede insertar los autores al combobox..." + ex);
+            System.out.println("Error"+ex);
         } finally {
             this.cerrarconexion();
         }
