@@ -34,7 +34,7 @@
                     <label for="floatingInput">Usuario</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="txtContraseña" placeholder="Contraseña" required>
+                    <input type="password" class="form-control" name="txtContrasenia" placeholder="Contraseña" required>
                     <label for="floatingPassword">Contraseña</label>
                 </div>
                 <div class="form-check mb-3">

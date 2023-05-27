@@ -24,7 +24,7 @@ public class ControladorLogin extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             if (request.getParameter("btn-login") != null) {
                 String usuario = request.getParameter("txtUsuario");
-                String contraseña = request.getParameter("txtContraseña");
+                String contraseña = request.getParameter("txtContrasenia");
                 boolean rpta = crude.ConsultaUsuario(usuario, contraseña);
                 if (rpta) {
                     response.sendRedirect("/ProyectoDWI/administracion.jsp");
