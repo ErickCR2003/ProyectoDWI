@@ -4,7 +4,7 @@ package Modelo;
 import java.io.InputStream;
 
 public class Producto {
-    private int id_producto;
+    private int ID;
     private String nombre;
     private String marca;
     private int talla;
@@ -79,15 +79,15 @@ public class Producto {
     public void setFoto(InputStream foto) {
         this.foto = foto;
     }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
     
-    public int getId_producto() {
-        return id_producto;
-    }
-
-    public void setId_producto(int id_producto) {
-        this.id_producto = id_producto;
-    }
-
     public String getNombre() {
         return nombre;
     }

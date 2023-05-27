@@ -6,7 +6,11 @@
     </servlet>
     <servlet>
         <servlet-name>ControladorXD</servlet-name>
-        <servlet-class>Controlador.ControladorXD</servlet-class>
+        <servlet-class>Controlador.Ctrl_Index</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ctrl_Login</servlet-name>
+        <servlet-class>Controlador.Ctrl_Login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controlador_Login</servlet-name>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ControladorXD</servlet-name>
         <url-pattern>/ControladorXD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ctrl_Login</servlet-name>
+        <url-pattern>/Ctrl_Login</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

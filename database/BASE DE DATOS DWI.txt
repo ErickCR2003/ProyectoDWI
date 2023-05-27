@@ -1,25 +1,25 @@
 CREATE TABLE categoria(
-	id_categoria INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(50)
 );
 
 CREATE TABLE talla(
-	id_talla INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	numeroCalzado INT
 );
 
 CREATE TABLE color(
-	id_color INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	color VARCHAR(50)
 );
 
 CREATE TABLE marca(
-	id_marca INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	marca VARCHAR(50)
 );
 
 CREATE TABLE cliente (
-	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR (80),
 	apellido VARCHAR (80),
 	telefono VARCHAR (10),
@@ -31,7 +31,7 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE compra(
-	id_compra INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	id_cliente INT, -- F
 	id_pago INT, -- F
 	fechaHoraCreacion DATETIME,
@@ -40,7 +40,7 @@ CREATE TABLE compra(
 );
 
 CREATE TABLE detallecompras(
-	id_detalle INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	id_producto INT, -- F
 	id_compra INT, -- F
 	cantidad INT,
@@ -49,27 +49,25 @@ CREATE TABLE detallecompras(
 );
 
 CREATE TABLE empleado(
-	id_empleado INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	usuario VARCHAR(50),
 	contraseña VARCHAR(50),
 	nombre VARCHAR(50),
 	apellido VARCHAR(50),
 	telefono VARCHAR(9),
 	email VARCHAR(50),
-	fnacimiento DATE,
-	tipo VARCHAR (15),
-	genero VARCHAR(10),
-	estado VARCHAR(15),
+	fecNacimiento DATE,
+	estado BOOLEAN,
 	dni VARCHAR(12)
 );
 
 CREATE TABLE pago (
-	id_pago INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	monto DECIMAL(18, 1)
 );
 
 CREATE TABLE producto (
-	id_producto INT PRIMARY KEY AUTO_INCREMENT,
+	ID INT PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(50),
 	genero VARCHAR(20),
 	precio DECIMAL(18, 1),
@@ -88,28 +86,28 @@ CREATE TABLE producto (
 
 
 ALTER TABLE producto
-ADD FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria);
+ADD FOREIGN KEY (id_categoria) REFERENCES categoria(ID);
 
 ALTER TABLE producto 
-ADD FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado);
+ADD FOREIGN KEY (id_empleado) REFERENCES empleado(ID);
 
 ALTER TABLE producto
-ADD FOREIGN KEY (id_talla) REFERENCES talla(id_talla);
+ADD FOREIGN KEY (id_talla) REFERENCES talla(ID);
 
 ALTER TABLE producto 
-ADD FOREIGN KEY (id_marca) REFERENCES marca(id_marca);
+ADD FOREIGN KEY (id_marca) REFERENCES marca(ID);
 
 ALTER TABLE producto
-ADD FOREIGN KEY (id_color) REFERENCES color(id_color);
+ADD FOREIGN KEY (id_color) REFERENCES color(ID);
 
 ALTER TABLE detalle_compras
-ADD FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+ADD FOREIGN KEY (id_producto) REFERENCES producto(ID);
 
 ALTER TABLE detalle_compras 
-ADD FOREIGN KEY (id_compra) REFERENCES compra(id_compra);
+ADD FOREIGN KEY (id_compra) REFERENCES compra(ID);
 
 ALTER TABLE compra
-ADD FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente);
+ADD FOREIGN KEY (id_cliente) REFERENCES cliente(ID);
 
 ALTER TABLE compra 
-ADD FOREIGN KEY (id_pago) REFERENCES pago(id_pago);
+ADD FOREIGN KEY (id_pago) REFERENCES pago(ID);

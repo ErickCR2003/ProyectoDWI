@@ -33,7 +33,7 @@ public class CRUDproducto extends ConexionBD {
             rs = st.executeQuery("SELECT * FROM producto");
             while (rs.next()) {
                 Producto p = new Producto();
-                p.setId_producto(rs.getInt(1));
+                p.setID(rs.getInt(1));
                 p.setNombre(rs.getString(2));
                 p.setMarca(rs.getString(3));
                 p.setTalla(rs.getInt(4));
