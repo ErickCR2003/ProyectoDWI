@@ -28,13 +28,13 @@
                 <path fill-rule="evenodd"
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
             </svg>
-            <form class="m-3">
+            <form class="m-3" method="post" action="/ProyectoDWI/ControladorLogin">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com">
+                    <input type="text" class="form-control" name="txtUsuario" placeholder="nombre@ejemplo.com" required>
                     <label for="floatingInput">Usuario</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                    <input type="password" class="form-control" name="txtContraseña" placeholder="Contraseña" required>
                     <label for="floatingPassword">Contraseña</label>
                 </div>
                 <div class="form-check mb-3">
@@ -42,7 +42,7 @@
                     <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <button type="submit" name="btn-login" class="btn btn-primary">Iniciar Sesión</button>
                 </div>
             </form>
         </div>

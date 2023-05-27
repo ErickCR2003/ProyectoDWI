@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Ctrl_Index extends HttpServlet {
+public class Ctrlindex extends HttpServlet {
 
     CRUDproducto crudp = new CRUDproducto();
     List<Producto> listaproductos = new ArrayList<>();
