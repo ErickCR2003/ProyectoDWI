@@ -20,30 +20,32 @@ CREATE TABLE marca(
 
 CREATE TABLE cliente (
 	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-	nombrecompleto VARCHAR (80),
+	nombre VARCHAR (80),
+	apellido VARCHAR (80),
 	telefono VARCHAR (10),
 	direccion VARCHAR (50),
-	fnacimiento DATE,
 	tipoIdentificacion VARCHAR(20),
-	numeroIdentifacion VARCHAR(50)
+	numeroIdentifacion VARCHAR(50),
+	email VARCHAR(100),
+	contraseña VARCHAR(20)
 );
 
 CREATE TABLE compra(
 	id_compra INT PRIMARY KEY AUTO_INCREMENT,
 	id_cliente INT, -- F
 	id_pago INT, -- F
-	fcreacion DATE,
-	hcreacion TIME,
-	monto DOUBLE,
+	fechaHoraCreacion DATETIME,
+	monto DECIMAL(18, 1),
 	estado VARCHAR(50)
 );
 
-CREATE TABLE detalle_compras(
+CREATE TABLE detallecompras(
 	id_detalle INT PRIMARY KEY AUTO_INCREMENT,
 	id_producto INT, -- F
 	id_compra INT, -- F
 	cantidad INT,
-	precioCompra DOUBLE	
+	precioCompra DECIMAL(18, 1),
+	subtotal DECIMAL(18, 1) 	
 );
 
 CREATE TABLE empleado(
@@ -63,15 +65,20 @@ CREATE TABLE empleado(
 
 CREATE TABLE pago (
 	id_pago INT PRIMARY KEY AUTO_INCREMENT,
-	monto DOUBLE
+	monto DECIMAL(18, 1)
 );
 
 CREATE TABLE producto (
 	id_producto INT PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(50),
-	precio DOUBLE,
+	genero VARCHAR(20),
+	precio DECIMAL(18, 1),
 	stock INT,
 	foto LONGBLOB,
+	categoria VARCHAR(50),
+	color VARCHAR(50),
+	talla INT,
+	marca VARCHAR(50),
 	id_categoria INT, -- F
 	id_empleado INT, -- F
 	id_talla INT, -- F
@@ -106,4 +113,3 @@ ADD FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente);
 
 ALTER TABLE compra 
 ADD FOREIGN KEY (id_pago) REFERENCES pago(id_pago);
-

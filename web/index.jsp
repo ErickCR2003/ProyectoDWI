@@ -12,67 +12,27 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-dark bg-dark">
+            <nav class="navbar navbar-dark bg-dark sticky-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">NavBar</a>
-
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasDarkNavbar"
-                        aria-controls="offcanvasDarkNavbar"
-                        >
+                    <a class="navbar-brand" href="index.jsp">Zapatillas Perú</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div
-                        class="offcanvas offcanvas-end text-bg-dark"
-                        tabindex="-1"
-                        id="offcanvasDarkNavbar"
-                        aria-labelledby="offcanvasDarkNavbarLabel"
-                        >
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
-                                Dark offcanvas
-                            </h5>
-                            <button
-                                type="button"
-                                class="btn-close btn-close-white"
-                                data-bs-dismiss="offcanvas"
-                                aria-label="Close"
-                                ></button>
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Zapatillas Perú</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="login.jsp"
-                                       >Iniciar Sesión</a
-                                    >
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Nosotros</a>
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        role="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                        >
-                                        Dropdown
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider" />
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </li>
-                                    </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Iniciar Sesión</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login.jsp">Administrar</a>
                                 </li>
                             </ul>
                         </div>
@@ -146,10 +106,10 @@
                     <input
                         class="form-control me-2"
                         type="search"
-                        placeholder="Search"
+                        placeholder="Buscar"
                         aria-label="Search"
                         />
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="btn btn-success" type="submit">Buscar</button>
                 </form>
             </div>
             <section
@@ -166,7 +126,7 @@
                         <a class="nav-link active" aria-current="page" href="ControladorXD?accion=todo">Todo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Skate</a>
+                        <a class="nav-link" href="#">Skateboarding</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Deportivas</a>
@@ -198,7 +158,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title text-center">${p.getNombre()}</h5>
                                     <p class="card-text">${p.getTalla()}<br>
-                                                         ${p.getColor()}<br>
+                                        ${p.getColor()}<br>
                                     </p>
                                     <p class="card-text">$/${p.getPrecio()}</p>
                                     <a class="btn btn-outline-primary">Agregar al Carrito</a>
