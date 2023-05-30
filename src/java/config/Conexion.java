@@ -2,7 +2,7 @@ package config;
 
 import java.sql.*;
 
-public class ConexionBD implements Parametros {
+public class Conexion implements Parametros {
 
     public Connection conexion;
     public Statement st;
@@ -11,16 +11,16 @@ public class ConexionBD implements Parametros {
     public PreparedStatement ps;
 
     //Constructor
-    public ConexionBD() {
+    public Conexion() {
 
     }
 
-    public Connection obtenerconexion(){
+    public Connection getConexion(){
         try {
             Class.forName(DRIVER);
             conexion = DriverManager.getConnection(RUTA, USUARIO, CLAVE);
             st = conexion.createStatement();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("ERROR! No se pudo cerrar la BD..." + e);
         }
         return conexion;
@@ -29,7 +29,7 @@ public class ConexionBD implements Parametros {
     public void cerrarconexion(){
         try {
             conexion.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("ERROR! No se pudo cerrar la BD..." + e);
         }
     }

@@ -70,9 +70,10 @@ CREATE TABLE producto (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(50),
 	genero VARCHAR(20),
+	descripcion VARCHAR(255),
 	precio DECIMAL(18, 1),
 	stock INT,
-	foto LONGBLOB,
+	imagen VARCHAR(255),
 	categoria VARCHAR(50),
 	color VARCHAR(50),
 	talla INT,
@@ -100,10 +101,10 @@ ADD FOREIGN KEY (id_marca) REFERENCES marca(ID);
 ALTER TABLE producto
 ADD FOREIGN KEY (id_color) REFERENCES color(ID);
 
-ALTER TABLE detalle_compras
+ALTER TABLE detallecompras
 ADD FOREIGN KEY (id_producto) REFERENCES producto(ID);
 
-ALTER TABLE detalle_compras 
+ALTER TABLE detallecompras 
 ADD FOREIGN KEY (id_compra) REFERENCES compra(ID);
 
 ALTER TABLE compra
@@ -111,3 +112,14 @@ ADD FOREIGN KEY (id_cliente) REFERENCES cliente(ID);
 
 ALTER TABLE compra 
 ADD FOREIGN KEY (id_pago) REFERENCES pago(ID);
+
+INSERT INTO categoria (nombre) VALUES ('Skateboarding');
+INSERT INTO talla (numeroCalzado) VALUES (41);
+INSERT INTO color (color) VALUES ('Negro');
+INSERT INTO marca (marca) VALUES ('Vans');
+INSERT INTO empleado (usuario, contraseña, nombre, apellido, telefono, email, fecNacimiento, estado, dni) 
+VALUES ('admin', 'admin', 'Juan', 'Pérez', '123456789', 'juan@example.com', '1990-05-15', true, '1234567890AB');
+INSERT INTO producto (nombre, genero, descripcion, precio, stock, imagen, categoria, color, talla, marca, id_categoria, id_empleado, id_talla, id_marca, id_color)
+VALUES ('Vans Classic', 'Hombre', 'Zapatillas Old Skool', 29.9, 50, 'img/Vans.jpg', 'Skateboarding', 'Negro', 41, 'Vans', 1, 1, 1, 1, 1);
+
+

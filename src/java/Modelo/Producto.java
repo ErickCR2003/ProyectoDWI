@@ -6,12 +6,15 @@ import java.io.InputStream;
 public class Producto {
     private int ID;
     private String nombre;
+    private String genero;
+    private String descripcion;
     private String marca;
     private int talla;
     private String color;
     private double precio;
     private int stock;
-    private InputStream foto;
+    private String imagen;
+    private String categoria;
     
     private int id_categoria;
     private int id_color;
@@ -24,8 +27,32 @@ public class Producto {
     public Producto() {
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public int getId_categoria() {
         return id_categoria;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public void setId_categoria(int id_categoria) {
@@ -71,15 +98,15 @@ public class Producto {
     public void setId_empleado(int id_empleado) {
         this.id_empleado = id_empleado;
     }
-        
-    public InputStream getFoto() {
-        return foto;
+
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setFoto(InputStream foto) {
-        this.foto = foto;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
-
+    
     public int getID() {
         return ID;
     }

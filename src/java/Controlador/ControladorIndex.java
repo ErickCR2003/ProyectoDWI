@@ -1,17 +1,19 @@
 package Controlador;
 
-import DAO.CRUDproducto;
+import DTO.CRUDproducto;
 import Modelo.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Ctrlindex extends HttpServlet {
+@WebServlet(name = "Ctrlindex", urlPatterns = {"/Ctrlindex"})
+public class ControladorIndex extends HttpServlet {
 
     CRUDproducto crudp = new CRUDproducto();
     List<Producto> listaproductos = new ArrayList<>();
@@ -27,7 +29,7 @@ public class Ctrlindex extends HttpServlet {
                 break;
             default:
                 request.setAttribute("listaproductos", listaproductos);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("Productos.jsp").forward(request, response);
         }
 
     }
