@@ -19,9 +19,9 @@ public class CRUDempleado implements DAOempleado {
     }
 
     @Override
-    public boolean ConsultaUsuario(String usuario, String contraseña) {
+    public Empleado ConsultaUsuario(String usuario, String contraseña) {
         //creamos e inicializamos la variable a usar
-        boolean rpta = false;
+        Empleado emp = null;
         //creamos un String Builder
         StringBuilder sql = new StringBuilder();
         //creamos la consulta
@@ -36,14 +36,24 @@ public class CRUDempleado implements DAOempleado {
             ResultSet rs = ps.executeQuery();
             //Si existe respuesta la rpta se le asignará el valor de "true"
             if (rs.next()) {
-                rpta = true;
+                emp = new Empleado();
+                emp.setID(rs.getInt(1));
+                emp.setUsuario(rs.getString(2));
+                emp.setContraseña(rs.getString(3));
+                emp.setNombre(rs.getString(4));
+                emp.setApellido(rs.getString(5));
+                emp.setTelefono(rs.getString(6));
+                emp.setEmail(rs.getString(7));
+                emp.setFecNacimiento(rs.getString(8));
+                emp.setEstado(rs.getBoolean(9));
+                emp.setDni(rs.getString(10));
             }
         } catch (SQLException e) {
             mensaje = e.getMessage();
         } finally {
             conexion.cerrarconexion();
         }
-        return rpta;
+        return emp;
     }
 
     @Override

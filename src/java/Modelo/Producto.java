@@ -2,8 +2,12 @@
 package Modelo;
 
 import java.io.InputStream;
+import java.text.DecimalFormat;
+
 
 public class Producto {
+    
+    DecimalFormat redondeado = new DecimalFormat("####.00");
     private int ID;
     private String nombre;
     private String genero;
@@ -147,8 +151,8 @@ public class Producto {
         this.color = color;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getPrecio() {
+        return redondeado.format(precio);
     }
 
     public void setPrecio(double precio) {

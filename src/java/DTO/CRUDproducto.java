@@ -1,25 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTO;
 
 import Modelo.Producto;
 import config.Conexion;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import DAO.DAOproducto;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author carra
- */
 public class CRUDproducto implements DAOproducto {
 
     private final Conexion conexion;
@@ -30,7 +25,7 @@ public class CRUDproducto implements DAOproducto {
     }
 
     @Override
-    public List<Producto> listarproductos(){
+    public List<Producto> listarproductos() {
 
         List<Producto> listaproductos = new ArrayList<>();
         StringBuilder sql = new StringBuilder();
@@ -65,33 +60,41 @@ public class CRUDproducto implements DAOproducto {
         return listaproductos;
     }
 
-//    public void listarIMG(int id, HttpServletResponse response){
-//        
+//    public void listarIMG(int id, HttpServletResponse response) {
+//
 //        InputStream inputStream = null;
 //        OutputStream outputStream = null;
 //        BufferedInputStream bufferedInputStream = null;
 //        BufferedOutputStream bufferedOutputStream = null;
 //
-//        try {
-//            outputStream = response.getOutputStream();
-//            this.getConexion();
-//            rs = st.executeQuery("SELECT * FROM producto where id_producto=" + id);
+//        StringBuilder sql = new StringBuilder();
+//        //creamos la consulta
+//        sql.append("SELECT ")
+//                .append("* FROM producto where ID = " + id);
+//        try (Connection cn = conexion.getConexion()) {
+//            PreparedStatement ps = cn.prepareStatement(sql.toString());
+//            //Ejecutamos la consulta
+//            ResultSet rs = ps.executeQuery();
+//            //Si existe respuesta la rpta se le asignará el valor de "true"
 //            if (rs.next()) {
-//                inputStream = rs.getBinaryStream("Foto");
+//                inputStream = rs.getBinaryStream("imagen");
 //            }
+//            
 //            bufferedInputStream = new BufferedInputStream(inputStream);
 //            bufferedOutputStream = new BufferedOutputStream(outputStream);
-//            int i = 0;
 //            
-//            while ((i=bufferedInputStream.read())!=-1) {                
+//            int i = 0;
+//
+//            while ((i = bufferedInputStream.read()) != -1) {
 //                bufferedOutputStream.write(i);
 //            }
-//          
 //
-//        } catch (Exception ex) {
-//            System.out.println("Error"+ex);
+//        } catch (SQLException e) {
+//            mensaje = e.getMessage();
+//        } catch (IOException ex) {
+//            Logger.getLogger(CRUDproducto.class.getName()).log(Level.SEVERE, null, ex);
 //        } finally {
-//            this.cerrarconexion();
+//            conexion.cerrarconexion();
 //        }
 //    }
 

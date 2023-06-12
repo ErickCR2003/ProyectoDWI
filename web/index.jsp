@@ -9,10 +9,9 @@
         <title>Zapatillas Perú</title>
     </head>
     <body>
-        
+
     </body>
     <script>
-        // Verificar si ya se redirigió
         window.location.href = window.location + "Ctrlindex?accion=SEL";
     </script>
 </html>

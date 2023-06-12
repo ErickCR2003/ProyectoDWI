@@ -20,12 +20,6 @@ CREATE TABLE marca(
 
 CREATE TABLE cliente (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
-	nombre VARCHAR (80),
-	apellido VARCHAR (80),
-	telefono VARCHAR (10),
-	direccion VARCHAR (50),
-	tipoIdentificacion VARCHAR(20),
-	numeroIdentifacion VARCHAR(50),
 	email VARCHAR(100),
 	contraseña VARCHAR(20)
 );
@@ -35,7 +29,7 @@ CREATE TABLE compra(
 	id_cliente INT, -- F
 	id_pago INT, -- F
 	fechaHoraCreacion DATETIME,
-	monto DECIMAL(18, 1),
+	monto DECIMAL(18, 2),
 	estado VARCHAR(50)
 );
 
@@ -44,8 +38,8 @@ CREATE TABLE detallecompras(
 	id_producto INT, -- F
 	id_compra INT, -- F
 	cantidad INT,
-	precioCompra DECIMAL(18, 1),
-	subtotal DECIMAL(18, 1) 	
+	precioCompra DECIMAL(18, 2),
+	subtotal DECIMAL(18, 2)	
 );
 
 CREATE TABLE empleado(
@@ -63,7 +57,7 @@ CREATE TABLE empleado(
 
 CREATE TABLE pago (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
-	monto DECIMAL(18, 1)
+	monto DECIMAL(18, 2)
 );
 
 CREATE TABLE producto (
@@ -71,7 +65,7 @@ CREATE TABLE producto (
 	nombre VARCHAR(50),
 	genero VARCHAR(20),
 	descripcion VARCHAR(255),
-	precio DECIMAL(18, 1),
+	precio DECIMAL(18, 2),
 	stock INT,
 	imagen VARCHAR(255),
 	categoria VARCHAR(50),
@@ -117,9 +111,12 @@ INSERT INTO categoria (nombre) VALUES ('Skateboarding');
 INSERT INTO talla (numeroCalzado) VALUES (41);
 INSERT INTO color (color) VALUES ('Negro');
 INSERT INTO marca (marca) VALUES ('Vans');
+
 INSERT INTO empleado (usuario, contraseña, nombre, apellido, telefono, email, fecNacimiento, estado, dni) 
 VALUES ('admin', 'admin', 'Juan', 'Pérez', '123456789', 'juan@example.com', '1990-05-15', true, '1234567890AB');
-INSERT INTO producto (nombre, genero, descripcion, precio, stock, imagen, categoria, color, talla, marca, id_categoria, id_empleado, id_talla, id_marca, id_color)
+
+-- INSERT INTO producto (nombre, genero, descripcion, precio, stock, imagen, categoria, color, talla, marca, id_categoria, id_empleado, id_talla, id_marca, id_color)
 VALUES ('Vans Classic', 'Hombre', 'Zapatillas Old Skool', 29.9, 50, 'img/Vans.jpg', 'Skateboarding', 'Negro', 41, 'Vans', 1, 1, 1, 1, 1);
+
 
 

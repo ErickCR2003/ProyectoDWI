@@ -1,0 +1,61 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<head>
+    <style>
+        .a-footer{
+            text-decoration: none;
+            color: gray;
+        }
+        
+        .a-footer:hover{
+            color: white;
+        }
+    </style>
+</head>
+
+<footer>
+    <div class="container-fluid">
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 p-5 bg-dark text-white">
+            <div class="d-flex align-items-center justify-content-center col-xs-12 col-md-6 col-lg-3 mb-3 text-center">
+                <img src="img/logo invertido.png" alt="Zapatillas Perú" height="150" width="150">
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 mb-3 text-center">
+                <p class=" mb-3"><b>ACERCA DE NOSOTROS</b></p>
+                <div class="mb-2">
+                    <a class="a-footer" href="#">Soporte Técnico</a>
+                </div>
+                <div class="mb-2">
+                    <a class="a-footer" href="#">Trabaja con Nosotros</a>
+                </div>
+                <div class="mb-2">
+                    <a class="a-footer" href="#">Nosotros</a>
+                </div>            
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 mb-3 text-center">
+                <p class=" mb-3"><b>LEGALES</b></p>
+                <div class="mb-2">
+                    <a class="a-footer" href="#">Políticas de Datos personales</a>
+                </div>
+                <div class="mb-2">
+                    <a class="a-footer" href="#">Términos y condiciones</a>
+                </div>
+                <div class="mb-2">
+                    <a class="a-footer" href="#">Formulario de Contacto</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 mb-3 text-center">
+                <p class=" mb-3"><b>CONTÁCTANOS</b></p>
+                <div class="mb-2">
+                    <a class="a-footer" href="#"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
+                </div>
+                <div class="mb-2">
+                    <a class="a-footer" href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+                <div class="mb-2">
+                    <a class="a-footer" href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end footer -->

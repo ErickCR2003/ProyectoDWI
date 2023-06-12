@@ -15,7 +15,7 @@ public class Empleado {
     private String apellido;
     private String telefono;
     private String email;
-    private LocalDate fecNacimiento;
+    private String fecNacimiento;
     private boolean estado;
     private String dni;
 
@@ -78,14 +78,14 @@ public class Empleado {
         this.email = email;
     }
 
-    public LocalDate getFecNacimiento() {
+    public String getFecNacimiento() {
         return fecNacimiento;
     }
 
-    public void setFecNacimiento(LocalDate fecNacimiento) {
+    public void setFecNacimiento(String fecNacimiento) {
         this.fecNacimiento = fecNacimiento;
-    }
-
+    }   
+    
     public boolean isEstado() {
         return estado;
     }

@@ -1,0 +1,16 @@
+
+.my-custom-nav-item {
+  list-style: none;
+}
+
+.my-custom-nav-link {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+
+.my-custom-nav-link:hover {
+  color: black;
+  
+}
+

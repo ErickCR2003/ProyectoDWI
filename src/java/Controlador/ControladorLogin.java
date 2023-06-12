@@ -1,35 +1,51 @@
-
 package Controlador;
 
 import DTO.CRUDempleado;
+import Validator.LoginValidator;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "ControladorLogin", urlPatterns = {"/ControladorLogin"})
+@WebServlet(name = "ControladorLogin", urlPatterns = {"/Login"})
 public class ControladorLogin extends HttpServlet {
-    
-    CRUDempleado crude = new CRUDempleado(); 
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            if (request.getParameter("btn-login") != null) {
-                String usuario = request.getParameter("txtUsuario");
-                String contraseña = request.getParameter("txtContrasenia");
-                boolean rpta = crude.ConsultaUsuario(usuario, contraseña);
-                if (rpta) {
-                    response.sendRedirect("/ProyectoDWI/administracion.jsp");
-                } else {
-                    response.sendRedirect("/ProyectoDWI/login.jsp?rpta="+rpta+" "+usuario+" "+contraseña);
+
+        response.setContentType("text/html;cyharset=UTF-8");
+        String accion = request.getParameter("accion");
+        accion = (accion == null) ? "" : accion;
+        String mensaje = null;
+        String target = "loginAdmin.jsp";
+        LoginValidator login = new LoginValidator(request);
+
+        switch (accion) {
+            case "LOG" -> {
+                mensaje = login.login();
+                if (mensaje != null) {
+                    target = "intranet/tablero.jsp";
                 }
             }
+            case "OUT" -> {
+                mensaje = login.logout();
+            }
+            default ->
+                mensaje = null;
         }
+
+        if (mensaje != null) {
+            request.setAttribute("mensaje", mensaje);
+        }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(target);
+        dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

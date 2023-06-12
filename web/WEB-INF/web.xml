@@ -12,6 +12,10 @@
         <servlet-name>Ctrl_Login</servlet-name>
         <servlet-class>Controlador.Ctrl_Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAside</servlet-name>
+        <servlet-class>Controlador.ServletAside</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador_Login</servlet-name>
         <url-pattern>/Controlador_Login</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Ctrl_Login</servlet-name>
         <url-pattern>/Ctrl_Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAside</servlet-name>
+        <url-pattern>/ServletAside</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

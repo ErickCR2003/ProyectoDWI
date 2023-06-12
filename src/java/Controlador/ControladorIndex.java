@@ -24,14 +24,17 @@ public class ControladorIndex extends HttpServlet {
         listaproductos = crudp.listarproductos();
 
         switch (accion) {
-            case "xd":
+            case "AgregarCarrito":
+                int id = Integer.parseInt(request.getParameter("id"));
+
+                break;
+            case "Carrito":
 
                 break;
             default:
                 request.setAttribute("listaproductos", listaproductos);
-                request.getRequestDispatcher("Productos.jsp").forward(request, response);
+                request.getRequestDispatcher("productos/Productos.jsp").forward(request, response);
         }
-
     }
 
     @Override
