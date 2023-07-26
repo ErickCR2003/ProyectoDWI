@@ -1,13 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
-/**
- *
- * @author carra
- */
 public class Talla {
-    
+    private int ID;
+    private String numeroCalzado;
+
+    public Talla() {
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getNumeroCalzado() {
+        return numeroCalzado;
+    }
+
+    public void setNumeroCalzado(String numeroCalzado) {
+        this.numeroCalzado = numeroCalzado;
+    }
+  
 }

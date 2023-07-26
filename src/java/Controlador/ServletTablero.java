@@ -24,7 +24,7 @@ public class ServletTablero extends HttpServlet {
         String target = "intranet/productos.jsp";
 
         HttpSession session = request.getSession(false);
-        boolean rpta = session != null && session.getAttribute("usuario") != null;
+        boolean rpta = session != null && session.getAttribute("rol").equals("ADMINISTRADOR");
         
         if (rpta) {
             switch (accion) {

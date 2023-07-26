@@ -6,36 +6,53 @@ package Modelo;
 
 import java.time.LocalDate;
 
-public class Empleado {
+public class Usuario {
     
     private int ID;
-    private String usuario;
+    private String email;
     private String contraseña;
     private String nombre;
     private String apellido;
-    private String telefono;
-    private String email;
     private String fecNacimiento;
-    private boolean estado;
+    private String rol;
     private String dni;
+    
+    private int id_metodoPago;
+    private MetodoPago metodoPago;
 
-    public Empleado() {
+    public Usuario() {
     }
 
+    public int getId_metodoPago() {
+        return id_metodoPago;
+    }
+
+    public void setId_metodoPago(int id_metodoPago) {
+        this.id_metodoPago = id_metodoPago;
+    }
+    
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+    
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+        
     public int getID() {
         return ID;
     }
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     public String getContraseña() {
@@ -61,15 +78,7 @@ public class Empleado {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
+   
     public String getEmail() {
         return email;
     }
@@ -86,14 +95,6 @@ public class Empleado {
         this.fecNacimiento = fecNacimiento;
     }   
     
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
     public String getDni() {
         return dni;
     }

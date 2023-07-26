@@ -18,17 +18,11 @@ CREATE TABLE marca(
 	marca VARCHAR(50)
 );
 
-CREATE TABLE cliente (
-	ID INT PRIMARY KEY AUTO_INCREMENT,
-	email VARCHAR(100),
-	contraseña VARCHAR(20)
-);
-
 CREATE TABLE compra(
-	ID INT PRIMARY KEY AUTO_INCREMENT,
+	ID_compra INT PRIMARY KEY AUTO_INCREMENT,
 	id_cliente INT, -- F
-	id_pago INT, -- F
-	fechaHoraCreacion DATETIME,
+	id_metodopago INT, -- F
+	fechaHoraCreacion VARCHAR(50),
 	monto DECIMAL(18, 2),
 	estado VARCHAR(50)
 );
@@ -42,22 +36,23 @@ CREATE TABLE detallecompras(
 	subtotal DECIMAL(18, 2)	
 );
 
-CREATE TABLE empleado(
+CREATE TABLE metodopago (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
-	usuario VARCHAR(50),
-	contraseña VARCHAR(50),
-	nombre VARCHAR(50),
-	apellido VARCHAR(50),
-	telefono VARCHAR(9),
-	email VARCHAR(50),
-	fecNacimiento DATE,
-	estado BOOLEAN,
-	dni VARCHAR(12)
+	numeroTarjeta VARCHAR(19),
+	fechaExpiracion VARCHAR(5),
+	cvv VARCHAR(3)
 );
 
-CREATE TABLE pago (
+CREATE TABLE usuario(
 	ID INT PRIMARY KEY AUTO_INCREMENT,
-	monto DECIMAL(18, 2)
+	email VARCHAR(255),
+	contraseña VARCHAR(25),
+	nombre VARCHAR(50),
+	apellido VARCHAR(50),
+	fecNacimiento VARCHAR(20),
+	rol VARCHAR(20),
+	dni VARCHAR(8),
+	id_metodopago INT -- F
 );
 
 CREATE TABLE producto (
@@ -84,7 +79,7 @@ ALTER TABLE producto
 ADD FOREIGN KEY (id_categoria) REFERENCES categoria(ID);
 
 ALTER TABLE producto 
-ADD FOREIGN KEY (id_empleado) REFERENCES empleado(ID);
+ADD FOREIGN KEY (id_empleado) REFERENCES usuario(ID);
 
 ALTER TABLE producto
 ADD FOREIGN KEY (id_talla) REFERENCES talla(ID);
@@ -99,24 +94,31 @@ ALTER TABLE detallecompras
 ADD FOREIGN KEY (id_producto) REFERENCES producto(ID);
 
 ALTER TABLE detallecompras 
-ADD FOREIGN KEY (id_compra) REFERENCES compra(ID);
+ADD FOREIGN KEY (id_compra) REFERENCES compra(ID_compra);
 
 ALTER TABLE compra
-ADD FOREIGN KEY (id_cliente) REFERENCES cliente(ID);
+ADD FOREIGN KEY (id_cliente) REFERENCES usuario(ID);
 
 ALTER TABLE compra 
-ADD FOREIGN KEY (id_pago) REFERENCES pago(ID);
+ADD FOREIGN KEY (id_metodopago) REFERENCES metodopago(ID);
+
+ALTER TABLE usuario
+ADD FOREIGN KEY (id_metodopago) REFERENCES metodopago(ID);
 
 INSERT INTO categoria (nombre) VALUES ('Skateboarding');
 INSERT INTO talla (numeroCalzado) VALUES (41);
 INSERT INTO color (color) VALUES ('Negro');
 INSERT INTO marca (marca) VALUES ('Vans');
 
-INSERT INTO empleado (usuario, contraseña, nombre, apellido, telefono, email, fecNacimiento, estado, dni) 
-VALUES ('admin', 'admin', 'Juan', 'Pérez', '123456789', 'juan@example.com', '1990-05-15', true, '1234567890AB');
+INSERT INTO usuario (email, contraseña, nombre, apellido, fecNacimiento, rol, dni,id_metodopago) 
+VALUES ('admin@gmail.com', 'admin', 'Juan', 'Pérez', '02-07-2003', 'ADMINISTRADOR', '78451223', null);
 
--- INSERT INTO producto (nombre, genero, descripcion, precio, stock, imagen, categoria, color, talla, marca, id_categoria, id_empleado, id_talla, id_marca, id_color)
+INSERT INTO usuario (email, contraseña, nombre, apellido, fecNacimiento, rol, dni,id_metodopago) 
+VALUES ('xd@gmail.com', 'xd', 'Jorge', 'Pérez', '03-07-2003', 'CLIENTE', '78945612', null);
+
+INSERT INTO producto (nombre, genero, descripcion, precio, stock, imagen, categoria, color, talla, marca, id_categoria, id_empleado, id_talla, id_marca, id_color)
 VALUES ('Vans Classic', 'Hombre', 'Zapatillas Old Skool', 29.9, 50, 'img/Vans.jpg', 'Skateboarding', 'Negro', 41, 'Vans', 1, 1, 1, 1, 1);
+
 
 
 

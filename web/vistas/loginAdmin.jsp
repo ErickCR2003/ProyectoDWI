@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,6 +17,7 @@
     </head>
 
     <body style="background-color: rgb(3, 54, 70);">
+
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="row justify-content-center align-items-center border rounded p-3 m-3"
                  style="background-color: rgb(250, 250, 250);">
@@ -28,21 +29,35 @@
                 </svg>
                 <form class="m-3" method="post" action="Login">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="txtUsuario" placeholder="nombre@ejemplo.com" required>
-                        <label for="floatingInput">Usuario</label>
+                        <input type="email" class="form-control" name="txtUsuario" placeholder="nombre@ejemplo.com" required>
+                        <label for="floatingInput">Email</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" name="txtContrasenia" placeholder="Contraseña" required>
                         <label for="floatingPassword">Contraseña</label>
                     </div>
-                    <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" checked="checked"/>
-                        <label class="form-check-label" for="exampleCheck1">Recordame</label>
+                    <div class="d-flex form-check mb-4 justify-content-between fs-6">
+                        <div>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" checked="checked"/>
+                            <label class="form-check-label" for="exampleCheck1">Recordame</label>
+                        </div>
+                        <a class="text-center text-decoration-none text-secondary" href="#">¿Olvidaste tu contraseña?</a>
                     </div>
+
                     <input type="hidden" name="accion" value="LOG">
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark">Iniciar Sesión</button>
                     </div>
+                    <div class="text-center mt-3 fs-6">
+                        <p class="mb-1 text-secondary">¿No tienes una cuenta?</p>
+                        <a class="text-center" href="Login?accion=SIGNUP">Regístrate aquí</a>
+                    </div>
+
+                    <c:if test="${mensaje != null}">
+                        <div class="alert alert-danger mt-3 text-center" role="alert">
+                            ${mensaje}
+                        </div>
+                    </c:if>
                 </form>
             </div>
         </div>

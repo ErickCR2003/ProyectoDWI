@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>ControladorXD</servlet-name>
-        <servlet-class>Controlador.ControladorIndex</servlet-class>
+        <servlet-class>Controlador.ServletIndex</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Ctrl_Login</servlet-name>

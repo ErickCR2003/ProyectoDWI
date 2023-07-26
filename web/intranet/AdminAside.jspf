@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="ServletAside?accion=Carga" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Carga Masiva</p>
                             </a>
@@ -77,7 +77,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" style="cursor: pointer;" class="nav-link" >
+                    <a href="ServletClientes?accion=Clientes" style="cursor: pointer;" class="nav-link" >
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Clientes
@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="ServletVentas?accion=Ventas" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Ventas

@@ -104,7 +104,7 @@
                                     <p class="card-text text-center lead"><b>S/${p.getPrecio()}</b></p>
                                     <div class="card-text text-center">
                                         <a href="Ctrlindex?accion=AgregarCarrito&id=${p.getID()}" class="btn btn-outline-danger mb-1">Agregar al Carrito</a>
-                                        <a href="Ctrlindex?accion=AgregarCarrito" class="btn btn-outline-success">Comprar</a>
+                                        <a href="Ctrlindex?accion=Comprar&id=${p.getID()}" class="btn btn-outline-success">Comprar</a>
                                     </div>
 
                                 </div>
@@ -121,7 +121,8 @@
 
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
     </body>
 </html>

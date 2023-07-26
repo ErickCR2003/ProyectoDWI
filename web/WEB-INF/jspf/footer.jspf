@@ -28,13 +28,13 @@
                     <a class="a-footer" href="#">Trabaja con Nosotros</a>
                 </div>
                 <div class="mb-2">
-                    <a class="a-footer" href="#">Nosotros</a>
+                    <a class="a-footer" href="vistas/nosotros.jsp">Nosotros</a>
                 </div>            
             </div>
             <div class="col-xs-12 col-md-6 col-lg-3 mb-3 text-center">
                 <p class=" mb-3"><b>LEGALES</b></p>
                 <div class="mb-2">
-                    <a class="a-footer" href="#">Políticas de Datos personales</a>
+                    <a class="a-footer" href="vistas/politicas-privacidad.jsp">Políticas de Privacidad</a>
                 </div>
                 <div class="mb-2">
                     <a class="a-footer" href="#">Términos y condiciones</a>

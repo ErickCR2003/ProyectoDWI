@@ -25,7 +25,7 @@ public class Producto {
     private int id_talla;
     private int id_marca;
     
-    private Empleado emp;
+    private Usuario emp;
     private int id_empleado;
 
     public Producto() {
@@ -87,11 +87,11 @@ public class Producto {
         this.id_marca = id_marca;
     }
 
-    public Empleado getEmp() {
+    public Usuario getEmp() {
         return emp;
     }
 
-    public void setEmp(Empleado emp) {
+    public void setEmp(Usuario emp) {
         this.emp = emp;
     }
 

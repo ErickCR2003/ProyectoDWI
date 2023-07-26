@@ -1,6 +1,5 @@
 package Controlador;
 
-import DTO.CRUDempleado;
 import Validator.LoginValidator;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ControladorLogin", urlPatterns = {"/Login"})
-public class ControladorLogin extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,18 +21,24 @@ public class ControladorLogin extends HttpServlet {
         String accion = request.getParameter("accion");
         accion = (accion == null) ? "" : accion;
         String mensaje = null;
-        String target = "loginAdmin.jsp";
+        String target = "vistas/loginAdmin.jsp";
         LoginValidator login = new LoginValidator(request);
 
         switch (accion) {
             case "LOG" -> {
                 mensaje = login.login();
-                if (mensaje != null) {
-                    target = "intranet/tablero.jsp";
-                }
+                HttpSession session = request.getSession(false);
+                if (session != null && session.getAttribute("usuario") != null) {
+                    target = session.getAttribute("rol").equals("ADMINISTRADOR") ? "intranet/tablero.jsp" : "index.jsp";
+                } 
             }
             case "OUT" -> {
                 mensaje = login.logout();
+                target = "index.jsp";
+            }
+            case "SIGNUP" -> {
+                mensaje = login.logout();
+                target = "vistas/registrate.jsp";
             }
             default ->
                 mensaje = null;

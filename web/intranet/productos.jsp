@@ -33,7 +33,9 @@
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
-
+            <c:if test="${mensaje != null}">
+                <p>${mensaje}</p>
+            </c:if>
 
             <!-- Navbar -->
             <%@include file="AdminNavbar.jspf" %>
@@ -68,8 +70,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Tabla de Zapatillas</h3>
+                                    <div class="d-flex justify-content-between mx-4 mt-3">
+                                        <h3 class="d-flex card-title align-items-center">Tabla de Productos</h3>
+                                        <button type="button" class="btn btn-default" id="btn-insert" data-toggle="modal" data-target="#modal-insert">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -78,7 +83,6 @@
                                                 <tr>
                                                     <th>Imagen</th>
                                                     <th>Nombre</th>
-                                                    <th>Descripción</th>
                                                     <th>Precio</th>
                                                     <th>Stock</th>
                                                     <th>Categoria</th>
@@ -87,18 +91,29 @@
                                                     <th>Opciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody >
                                                 <c:forEach var="p" items="${listaproductos}">
                                                     <tr>
                                                         <td><img src="${p.getImagen()}" height="50px" width="110px" alt="..." /></td>
                                                         <td>${p.getNombre()}</td>
-                                                        <td>${p.getDescripcion()}</td>
                                                         <td>${p.getPrecio()}</td>
                                                         <td>${p.getStock()}</td>
                                                         <td>${p.getCategoria()}</td>
                                                         <td>${p.getColor()}</td>
                                                         <td>${p.getTalla()}</td>
+                                                        <td class="text-center">
+                                                            <div class="btn-group">
+                                                                <input type="hidden" id="idproduct" value="${p.getID()}">
+                                                                <button type="button" class="btn btn-warning" id="btn-editar" data-toggle="modal" data-target="#modal-edit">
+                                                                    <i class="fa fa-pen"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger" id="btn-eliminar" data-toggle="modal" data-target="#modal-edit">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
                                                     </tr>
+
                                                 </c:forEach>
                                             </tbody>
                                         </table>
@@ -113,18 +128,111 @@
                     </div>
                     <!-- /.container-fluid -->
                 </section>
+                <!-- /modal insert -->
+                <div class="modal fade" id="modal-insert">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Insertar Producto</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="form-insert">
+                                    <div class="col">
+                                        <div class="row">
+
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                                    <input type="text" class="form-control" id="name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Precio:</label>
+                                                    <input type="text" class="form-control" id="price" min="0">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Stock:</label>
+                                                    <input type="number" class="form-control" id="stock" min="0">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Genero:</label>
+                                                    <select id="genero" class="form-control">
+                                                        <option selected>Elige...</option>
+                                                        <option value="Hombre" >Hombre</option>
+                                                        <option value="Mujer" >Mujer</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Descripcion:</label>
+                                                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Categoria:</label>
+                                                    <select id="category" class="form-control">
+                                                        <option selected>Elige...</option>
+                                                        <c:forEach var="c" items="${listaCategorias}">
+                                                            <option value="${c.getID()}" >${c.getNombre()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Color:</label>
+                                                    <select id="color" class="form-control">
+                                                        <option selected>Elige...</option>
+                                                        <c:forEach var="c" items="${listaColor}">
+                                                            <option value="${c.getID()}" >${c.getColor()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Talla:</label>
+                                                    <select id="size" class="form-control">
+                                                        <option selected>Elige...</option>
+                                                        <c:forEach var="c" items="${listaTalla}">
+                                                            <option value="${c.getID()}" >${c.getNumeroCalzado()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Marca:</label>
+                                                    <select id="marca" class="form-control">
+                                                        <option selected>Elige...</option>
+                                                        <c:forEach var="c" items="${listaMarca}">
+                                                            <option value="${c.getID()}" >${c.getMarca()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Imagen:</label>
+                                                    <input type="text" class="form-control" id="image">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>   
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button class="btn btn-primary" onclick="insertarProducto()" data-dismiss="modal">Guardar Cambios</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
                 <!-- /.content -->
                 <!-- end Aside -->
             </div>
-            <!-- /.content-wrapper -->  
-
-            <!-- footer -->
-            <%@include file="AdminFooter.jspf" %>
-            <!-- end footer -->
-
-
+            <!-- /.content-wrapper -->
         </div>
-                    <!-- REQUIRED SCRIPTS -->
+        <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
@@ -148,16 +256,55 @@
             AdminLTE for demo purposes 
         <script src="dist/js/demo.js"></script> 
         -->
-        
+
         <!-- Page specific script -->
         <script>
-            $(function () {
-                $("#example1").DataTable({
-                    "responsive": true, "lengthChange": false, "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            });
+                                    $(function () {
+                                        $("#example1").DataTable({
+                                            "responsive": true, "lengthChange": false, "autoWidth": false,
+                                            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                                    });
         </script>
-        
+
+        <script>
+            function insertarProducto() {
+                // Obtener los valores actualizados de los campos del modal
+                var nombre = document.getElementById('name').value;
+                var price = document.getElementById('price').value;
+                var stock = document.getElementById('stock').value;
+                var genero = document.getElementById('genero').value;
+                var descripcion = document.getElementById('descripcion').value;
+                var category = document.getElementById('category').value;
+                var color = document.getElementById('color').value;
+                var size = document.getElementById('size').value;
+                var marca = document.getElementById('marca').value;
+                var image = document.getElementById('image').value;
+
+                $.ajax({
+                    url: 'ServletProductos',
+                    data: {
+                        accion: 'INS',
+                        nombre: nombre,
+                        precio: price,
+                        stock: stock,
+                        genero: genero,
+                        descripcion: descripcion,
+                        category: category,
+                        color: color,
+                        size: size,
+                        marca: marca,
+                        image: image
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        location.reload();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        </script>
+
     </body>
 </html>

@@ -12,6 +12,6 @@
 
     </body>
     <script>
-        window.location.href = window.location + "Ctrlindex?accion=SEL";
+        window.location.href = "Ctrlindex?accion=Principal";
     </script>
 </html>
